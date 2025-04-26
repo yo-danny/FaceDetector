@@ -6,3 +6,4 @@ The main menu, is a basic JFrame, with a label and a button.
 
 I used JavaCV API for the detection, with Cascade Classifiers:  <br>
 ref: <a href="https://docs.opencv.org/3.4/db/d28/tutorial_cascade_classifier.html" target="_blank">OpenCV: Cascade Classifier</a>
+[OpenCV: Cascade Classifier](#https://docs.opencv.org/3.4/db/d28/tutorial_cascade_classifier.html){:target="_blank"}
