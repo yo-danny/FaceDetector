@@ -1,7 +1,5 @@
 package org.example;
 
-import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -41,8 +39,6 @@ public class VideoFrame extends JFrame {
         });
 
         pack();
-
-        Platform.startup(() -> {});
     }
 
     private void jButtonActionPerformed(ActionEvent e){
@@ -55,6 +51,6 @@ public class VideoFrame extends JFrame {
     }
 
     private void playVideo(File videoFile){
-        new FaceDetector(videoFile);
+        new Thread(() -> new FaceDetector(videoFile)).start();
     }
 }

@@ -5,6 +5,8 @@ import org.bytedeco.opencv.opencv_core.*;
 import org.bytedeco.opencv.opencv_objdetect.CascadeClassifier;
 
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,13 +41,13 @@ public class FaceDetector {
             canvasFrame.setCanvasSize(grabbedImage.imageWidth, grabbedImage.imageHeight);
             grabber.setFrameRate(grabber.getFrameRate());
 
-            canvasFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
             CascadeClassifier cascade = new CascadeClassifier(CASCADE_FILE);
             Mat matImage = new Mat();
             OpenCVFrameConverter.ToMat toMatImage = new OpenCVFrameConverter.ToMat();
 
-            while (canvasFrame.isVisible() && (grabbedImage = grabber.grab()) != null) {
+            while ((grabbedImage = grabber.grab()) != null) {
+                if(!canvasFrame.isVisible()) break;
+
                 matImage = toMatImage.convert(grabbedImage);
 
                 if (matImage == null) continue;
